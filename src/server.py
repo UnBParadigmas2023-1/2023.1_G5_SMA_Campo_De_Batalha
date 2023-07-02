@@ -1,4 +1,4 @@
-import pathlib
+import os
 
 import mesa
 
@@ -73,18 +73,16 @@ def modelo_desenho(agent):
         "text_color": "White",
     }
 
-    assets_path = pathlib.Path(__file__).parent.parent / "assets"
-
     agent_color = 'azul' if agent.tipo == 'aliado' else 'vermelho'
 
     if type(agent) is AgenteArcher:
-        portrayal["Shape"] = str(assets_path / f"arco_{agent_color}.png")
+        portrayal["Shape"] = f"./assets/arco_{agent_color}.png"
 
     elif type(agent) is AgenteKnight:
-        portrayal["Shape"] = str(assets_path / f"espada_{agent_color}.png")
+        portrayal["Shape"] = f"./assets/espada_{agent_color}.png"
 
     else:
-        portrayal["Shape"] = str(assets_path / f"lanca_{agent_color}.png")
+        portrayal["Shape"] = f"./assets/lanca_{agent_color}.png"
 
 
     return portrayal
