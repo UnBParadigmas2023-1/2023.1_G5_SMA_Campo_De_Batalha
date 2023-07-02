@@ -11,15 +11,43 @@ from src.agent_knight import AgenteKnight
 
 
 model_params = {
-        "num_aliados": mesa.visualization.Slider(
-            name="Número de agentes do time azul",
+        "num_arqueiros_aliados": mesa.visualization.Slider(
+            name="Número de arqueiros do time azul",
             min_value=0,
             max_value=40,
             step=1,
             value=3,
         ),
-        "num_inimigos": mesa.visualization.Slider(
-            name="Número de agentes do time vermelho",
+        "num_cavaleiros_aliados": mesa.visualization.Slider(
+            name="Número de cavaleiros do time azul",
+            min_value=0,
+            max_value=40,
+            step=1,
+            value=3,
+        ),
+        "num_lanceiros_aliados": mesa.visualization.Slider(
+            name="Número de lanceiros do time azul",
+            min_value=0,
+            max_value=40,
+            step=1,
+            value=3,
+        ),
+        "num_arqueiros_inimigos": mesa.visualization.Slider(
+            name="Número de arqueiros do time vermelho",
+            min_value=0,
+            max_value=40,
+            step=1,
+            value=3,
+        ),
+        "num_cavaleiros_inimigos": mesa.visualization.Slider(
+            name="Número de cavaleiros do time vermelho",
+            min_value=0,
+            max_value=40,
+            step=1,
+            value=3,
+        ),
+        "num_lanceiros_inimigos": mesa.visualization.Slider(
+            name="Número de lanceiros do time vermelho",
             min_value=0,
             max_value=40,
             step=1,
@@ -27,6 +55,7 @@ model_params = {
         ),
         "width": 10,
         "height": 10,
+        
 }
 
 def qtdAliadosInimigos(model):
