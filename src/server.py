@@ -1,4 +1,7 @@
+import pathlib
+
 import mesa
+
 from src.modelo import Modelo
 from mesa.visualization.modules import CanvasGrid
 from src.agent_archer import AgenteArcher
@@ -42,16 +45,18 @@ def modelo_desenho(agent):
         "text_color": "White",
     }
 
+    assets_path = pathlib.Path(__file__).parent.parent.absolute() / "assets"
+
     agent_color = 'azul' if agent.tipo == 'aliado' else 'vermelho'
 
     if type(agent) is AgenteArcher:
-        portrayal["Shape"] = f"./assets/arco_{agent_color}.png"
+        portrayal["Shape"] = str(assets_path / f"arco_{agent_color}.png")
 
     elif type(agent) is AgenteKnight:
-        portrayal["Shape"] = f"./assets/espada_{agent_color}.png"
+        portrayal["Shape"] = str(assets_path / f"espada_{agent_color}.png")
 
     else:
-        portrayal["Shape"] = f"./assets/lanca_{agent_color}.png"
+        portrayal["Shape"] = str(assets_path / f"lanca_{agent_color}.png")
 
 
     return portrayal
