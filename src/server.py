@@ -40,20 +40,19 @@ def modelo_desenho(agent):
         "Filled": "true",
         "Layer": 0,
         "text_color": "White",
-        "text": f"{agent.vida}-{agent.unique_id}",  # Exibe o nível de vida do agente
     }
 
     agent_color = 'azul' if agent.tipo == 'aliado' else 'vermelho'
 
     if type(agent) is AgenteArcher:
-        portrayal["Shape"] = f"../assets/arco_{agent_color}.png"
+        portrayal["Shape"] = f"./assets/arco_{agent_color}.png"
 
     elif type(agent) is AgenteKnight:
-        portrayal["Shape"] = f"../assets/espada_{agent_color}.png"
+        portrayal["Shape"] = f"./assets/espada_{agent_color}.png"
 
     else:
-        portrayal["Shape"] = f"../assets/lanca_{agent_color}.png"
-  
+        portrayal["Shape"] = f"./assets/lanca_{agent_color}.png"
+
 
     return portrayal
 
