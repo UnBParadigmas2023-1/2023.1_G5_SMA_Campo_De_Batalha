@@ -32,3 +32,8 @@ class AgenteLancer(mesa.Agent):
                         self.model.schedule.remove(self)
                         return
 
+    def advance(self) -> None:
+        if self.pos != None:
+            posicoes_ocupadas = [agente.pos for agente in self.model.schedule.agents]
+            pos = posicaoVazia(self.model, posicoes_ocupadas)
+            self.model.grid.move_agent(self, pos)
