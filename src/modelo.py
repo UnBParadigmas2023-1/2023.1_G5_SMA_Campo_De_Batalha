@@ -53,4 +53,15 @@ class Modelo(mesa.Model):
 				self.grid.place_agent(agente, pos)
 
 	def step(self):
+		aliados_count = inimigos_count = 0
+		for agente in self.schedule.agents:
+			if agente.tipo == 'aliado':
+				aliados_count += 1
+			elif agente.tipo == 'inimigo':
+				inimigos_count += 1
+
+		if aliados_count == 0 or inimigos_count == 0:
+			self.running = False
+			return
+
 		self.schedule.step()
