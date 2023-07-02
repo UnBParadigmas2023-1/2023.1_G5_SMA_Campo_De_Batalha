@@ -53,9 +53,8 @@ model_params = {
             step=1,
             value=3,
         ),
-        "width": 10,
-        "height": 10,
-        
+        "width": 25,
+        "height": 25,
 }
 
 def qtdAliadosInimigos(model):
@@ -74,7 +73,7 @@ def modelo_desenho(agent):
         "text_color": "White",
     }
 
-    assets_path = pathlib.Path(__file__).parent.parent.absolute() / "assets"
+    assets_path = pathlib.Path(__file__).parent.parent / "assets"
 
     agent_color = 'azul' if agent.tipo == 'aliado' else 'vermelho'
 
@@ -90,7 +89,7 @@ def modelo_desenho(agent):
 
     return portrayal
 
-canvas_elementos = CanvasGrid(modelo_desenho, 10, 10, 600, 600)
+canvas_elementos = CanvasGrid(modelo_desenho, 25, 25, 600, 600)
 
 server = mesa.visualization.ModularServer(
     Modelo,
