@@ -1,5 +1,10 @@
 import mesa
-from mesa.visualization.ModularVisualization import ModularServer
+from src.modelo import Modelo
+from mesa.visualization.modules import CanvasGrid
+from src.agent_archer import AgenteArcher
+from src.agent_lancer import AgenteLancer
+from src.agente_knight import AgenteKnight
+
 
 
 model_params = {
@@ -72,12 +77,16 @@ def modelo_desenho(agent):
 
     return portrayal
 
-server = ModularServer(
+canvas_elementos = CanvasGrid(modelo_desenho, 10, 10, 600, 600)
+
+server = mesa.visualization.ModularServer(
     Modelo,
     [
-        
+        canvas_elementos,
+        qtdAliadosInimigos,
     ],
     "Campo de batalha",
-    
     model_params,
 )
+
+server.description = "Modelo de simulação em campo de batalha entre um grupo e outro."
