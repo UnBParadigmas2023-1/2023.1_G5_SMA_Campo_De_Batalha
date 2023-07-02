@@ -17,7 +17,7 @@ class AgenteArcher(mesa.Agent):
     def operate(self) -> None:
         for vizinho in self.model.grid.iter_neighbors( self.pos, moore=True, radius=self.range):
                 print(vizinho.unique_id, "vizinho de", self.unique_id, "em", self.pos)
-                if vizinho.tipo != self.tipo:
+                if vizinho.tipo != self.tipo and vizinho.tipo != 'healer':
                     print(vizinho.unique_id, "atacado por", self.unique_id)
                     vizinho.vida -= 1
 

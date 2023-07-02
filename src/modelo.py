@@ -5,6 +5,7 @@ from enum import Enum
 from src.agent_archer import AgenteArcher
 from src.agent_lancer import AgenteLancer
 from src.agent_knight import AgenteKnight
+from src.agent_healer import AgenteHealer
 from src.utils import *
 
 class Character(Enum):
@@ -15,18 +16,26 @@ class Character(Enum):
 class Modelo(mesa.Model):
     def __init__(self, num_arqueiros_aliados, num_cavaleiros_aliados, num_lanceiros_aliados,
                  num_arqueiros_inimigos, num_cavaleiros_inimigos, num_lanceiros_inimigos,
-                 width, height):
+                 num_curandeiros, width, height):
         self.num_arqueiros_aliados = num_arqueiros_aliados
         self.num_cavaleiros_aliados = num_cavaleiros_aliados
         self.num_lanceiros_aliados = num_lanceiros_aliados
         self.num_arqueiros_inimigos = num_arqueiros_inimigos
         self.num_cavaleiros_inimigos = num_cavaleiros_inimigos
         self.num_lanceiros_inimigos = num_lanceiros_inimigos
+        self.num_curandeiros = num_curandeiros
         self.grid = mesa.space.MultiGrid(width, height, torus=False)
         self.schedule = mesa.time.SimultaneousActivation(self)
         self.running = True
 
         pos_preenc = []
+        for _ in range(self.num_curandeiros):
+            pos = posicaoVazia(self, pos_preenc)
+            agente = AgenteHealer(pos, self)
+            pos_preenc.append(pos)
+            self.schedule.add(agente)
+            self.grid.place_agent(agente, pos)
+
         for i in range(self.num_arqueiros_aliados):
             class_chacacter = AgenteArcher
             pos = posicaoVazia(self, pos_preenc)

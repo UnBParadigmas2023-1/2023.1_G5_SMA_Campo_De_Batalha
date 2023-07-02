@@ -53,13 +53,20 @@ model_params = {
             step=1,
             value=3,
         ),
+        "num_curandeiros": mesa.visualization.Slider(
+            name="Número de curandeiros",
+            min_value=0,
+            max_value=40,
+            step=1,
+            value=3,
+        ),
         "width": 25,
         "height": 25,
 }
 
 def qtdAliadosInimigos(model):
-    aliados = [r for r in model.schedule.agents if "aliado" in r.tipo]
-    inimigos = [p for p in model.schedule.agents if "inimigo" in p.tipo]
+    aliados = [r for r in model.schedule.agents if "aliado" == r.tipo]
+    inimigos = [p for p in model.schedule.agents if "inimigo" == p.tipo]
     return f"Time azul: {len(aliados)}<br>Time vermelho: {len(inimigos)}"
 
 
@@ -73,17 +80,17 @@ def modelo_desenho(agent):
         "text_color": "White",
     }
 
-    agent_color = 'azul' if agent.tipo == 'aliado' else 'vermelho'
+    suffix = { "aliado": "azul", "inimigo": "vermelho"}
+    agent_suffix = suffix.get(agent.tipo, '')
 
     if type(agent) is AgenteArcher:
-        portrayal["Shape"] = f"./assets/arco_{agent_color}.png"
-
+        portrayal["Shape"] = f"./assets/arco_{agent_suffix}.png"
     elif type(agent) is AgenteKnight:
-        portrayal["Shape"] = f"./assets/espada_{agent_color}.png"
-
+        portrayal["Shape"] = f"./assets/espada_{agent_suffix}.png"
+    elif type(agent) is AgenteLancer:
+        portrayal["Shape"] = f"./assets/lanca_{agent_suffix}.png"
     else:
-        portrayal["Shape"] = f"./assets/lanca_{agent_color}.png"
-
+        portrayal["Shape"] = f"./assets/curandeiro.png"
 
     return portrayal
 
