@@ -8,49 +8,72 @@ from src.agent_knight import AgenteKnight
 from src.utils import *
 
 class Character(Enum):
-	AgenteArcher = 1
-	AgenteKnight = 2
-	AgenteLancer = 3
+    AgenteArcher = 1
+    AgenteKnight = 2
+    AgenteLancer = 3
 
 class Modelo(mesa.Model):
-	def __init__(self, num_aliados, num_inimigos, width, height):
-			self.num_agentes_aliados = num_aliados
-			self.num_agentes_inimigos = num_inimigos
-			self.grid = mesa.space.MultiGrid(width, height, torus=False)
-			self.schedule = mesa.time.SimultaneousActivation(self)
-			self.running = True
+    def __init__(self, num_arqueiros_aliados, num_cavaleiros_aliados, num_lanceiros_aliados,
+                 num_arqueiros_inimigos, num_cavaleiros_inimigos, num_lanceiros_inimigos,
+                 width, height):
+        self.num_arqueiros_aliados = num_arqueiros_aliados
+        self.num_cavaleiros_aliados = num_cavaleiros_aliados
+        self.num_lanceiros_aliados = num_lanceiros_aliados
+        self.num_arqueiros_inimigos = num_arqueiros_inimigos
+        self.num_cavaleiros_inimigos = num_cavaleiros_inimigos
+        self.num_lanceiros_inimigos = num_lanceiros_inimigos
+        self.grid = mesa.space.MultiGrid(width, height, torus=False)
+        self.schedule = mesa.time.SimultaneousActivation(self)
+        self.running = True
 
+        pos_preenc = []
+        for i in range(self.num_arqueiros_aliados):
+            class_chacacter = AgenteArcher
+            pos = posicaoVazia(self, pos_preenc)
+            agente = AgenteArcher(pos, self, f'aliado')
+            pos_preenc.append(pos)
+            self.schedule.add(agente)
+            self.grid.place_agent(agente, pos)
 
-			pos_preenc = []
-			for i in range(self.num_agentes_aliados):
-				class_chacacter = random.choice(list(Character))
-				pos = posicaoVazia(self, pos_preenc)
+        for i in range(self.num_cavaleiros_aliados):
+            class_chacacter = AgenteKnight
+            pos = posicaoVazia(self, pos_preenc)
+            agente = AgenteKnight(pos, self, f'aliado')
+            pos_preenc.append(pos)
+            self.schedule.add(agente)
+            self.grid.place_agent(agente, pos)
 
-				if class_chacacter == Character.AgenteArcher:
-					agente = AgenteArcher(pos, self, f'aliado')
-				elif class_chacacter == Character.AgenteKnight:
-					agente = AgenteKnight(pos, self, f'aliado')
-				elif class_chacacter == Character.AgenteLancer:
-					agente = AgenteLancer(pos, self, f'aliado')
+        for i in range(self.num_lanceiros_aliados):
+            class_chacacter = AgenteLancer
+            pos = posicaoVazia(self, pos_preenc)
+            agente = AgenteLancer(pos, self, f'aliado')
+            pos_preenc.append(pos)
+            self.schedule.add(agente)
+            self.grid.place_agent(agente, pos)
 
-				pos_preenc.append(pos)
-				self.schedule.add(agente)
-				self.grid.place_agent(agente, pos)
+        for i in range(self.num_arqueiros_inimigos):
+            class_chacacter = AgenteArcher
+            pos = posicaoVazia(self, pos_preenc)
+            agente = AgenteArcher(pos, self, f'inimigo')
+            pos_preenc.append(pos)
+            self.schedule.add(agente)
+            self.grid.place_agent(agente, pos)
 
-			for i in range(self.num_agentes_aliados):
-				class_chacacter = random.choice(list(Character))
-				pos = posicaoVazia(self, pos_preenc)
+        for i in range(self.num_cavaleiros_inimigos):
+            class_chacacter = AgenteKnight
+            pos = posicaoVazia(self, pos_preenc)
+            agente = AgenteKnight(pos, self, f'inimigo')
+            pos_preenc.append(pos)
+            self.schedule.add(agente)
+            self.grid.place_agent(agente, pos)
 
-				if class_chacacter == Character.AgenteArcher:
-					agente = AgenteArcher(pos, self, f'inimigo')
-				elif class_chacacter == Character.AgenteKnight:
-					agente = AgenteKnight(pos, self, f'inimigo')
-				elif class_chacacter == Character.AgenteLancer:
-					agente = AgenteLancer(pos, self, f'inimigo')
+        for i in range(self.num_lanceiros_inimigos):
+            class_chacacter = AgenteLancer
+            pos = posicaoVazia(self, pos_preenc)
+            agente = AgenteLancer(pos, self, f'inimigo')
+            pos_preenc.append(pos)
+            self.schedule.add(agente)
+            self.grid.place_agent(agente, pos)
 
-				pos_preenc.append(pos)
-				self.schedule.add(agente)
-				self.grid.place_agent(agente, pos)
-
-	def step(self):
-		self.schedule.step()
+    def step(self):
+        self.schedule.step()
