@@ -3,7 +3,7 @@ from src.modelo import Modelo
 from mesa.visualization.modules import CanvasGrid
 from src.agent_archer import AgenteArcher
 from src.agent_lancer import AgenteLancer
-from src.agente_knight import AgenteKnight
+from src.agent_knight import AgenteKnight
 
 
 
