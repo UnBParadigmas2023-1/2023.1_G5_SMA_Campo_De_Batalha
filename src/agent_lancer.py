@@ -16,13 +16,11 @@ class AgenteLancer(mesa.Agent):
 
     def operate(self) -> None:
         if self.vida <= 0:
-            self.model.grid.remove_agent(self)
-            self.model.schedule.remove(self)
-            return
-
-        for i in range(self.range):
-            print(self.unique_id, self.pos, i+1)
-            for vizinho in self.model.grid.iter_neighbors( self.pos, moore=True, radius=i + 1):
+                self.model.grid.remove_agent(self)
+                self.model.schedule.remove(self)
+                return
+        for vizinho in self.model.grid.iter_neighbors( self.pos, moore=True, radius=self.range):
+                print(vizinho)
                 print(vizinho.unique_id, "vizinho de", self.unique_id, "em", self.pos)
                 if vizinho.tipo != self.tipo:
                     print(vizinho.unique_id, "atacado por", self.unique_id)

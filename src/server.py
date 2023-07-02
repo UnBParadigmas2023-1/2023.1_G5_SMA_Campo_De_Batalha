@@ -1,4 +1,7 @@
+import pathlib
+
 import mesa
+
 from src.modelo import Modelo
 from mesa.visualization.modules import CanvasGrid
 from src.agent_archer import AgenteArcher
@@ -69,40 +72,21 @@ def modelo_desenho(agent):
         "Filled": "true",
         "Layer": 0,
         "text_color": "White",
-        "text": f"{agent.vida}-{agent.unique_id}",  # Exibe o nível de vida do agente
     }
-        # circulo = lanceiro
-        # cavaleiro = quadrado
-        # arqueiro = retangulo
+
+    assets_path = pathlib.Path(__file__).parent.parent.absolute() / "assets"
+
+    agent_color = 'azul' if agent.tipo == 'aliado' else 'vermelho'
+
     if type(agent) is AgenteArcher:
-        # portrayal["Shape"] = "./assets/archer.png"
-        # portrayal["Shape"] = "arrowHead"
-        # portrayal["scale"] = 0.8
-        # portrayal["heading_x"] = 0.8
-        # portrayal["heading_y"] = 0.8
-        portrayal["Shape"] = "rect"
-        portrayal["w"] = 0.99
-        portrayal["h"] = 0.4
+        portrayal["Shape"] = str(assets_path / f"arco_{agent_color}.png")
 
     elif type(agent) is AgenteKnight:
-
-        portrayal["Shape"] = "rect"
-        portrayal["w"] = 0.8
-        portrayal["h"] = 0.8
+        portrayal["Shape"] = str(assets_path / f"espada_{agent_color}.png")
 
     else:
-        portrayal["Shape"] = "circle"
-        portrayal["r"] = 0.8
+        portrayal["Shape"] = str(assets_path / f"lanca_{agent_color}.png")
 
-    if "aliado" in agent.tipo:
-        
-        portrayal["Color"] = "#0000FF"  # Cor azul para agentes aliados
-
-    else:
-        
-        portrayal["Color"] = "#8B0000"  # Cor azul para agentes aliados
-
-  
 
     return portrayal
 
