@@ -1,24 +1,8 @@
-# RepositorioTemplate
-Esse repositório é para ser utilizado pelos grupos como um template inicial, da home page do Projeto.
-As seções do Template NÃO DEVEM SER OMITIDAS, sendo TODAS RELEVANTES.
 
-**!! *Atenção: Renomeie o seu repositório para (Ano.Semestre)_(Grupo)_(Paradigma)_(NomeDoProjeto)*. !!** 
-
-Paradigmas:
- - Funcional
- - Logico
- - SMA
-
-**!! *Não coloque os nomes dos alunos no título do repositório*. !!**
-
-**!! *Exemplo de título correto: 2022.2_G1_Logico_ProjetoRoteirosAereos*. !!**
- 
- (Apague esses comentários)
-
-# NomeDoProjeto
+# Campo de Batalha
 
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01 <br>
-**Nro do Grupo (de acordo com a Planilha de Divisão dos Grupos)**: 05<br>
+**Nro do Grupo** : 05<br>
 **Paradigma**: SMA<br>
 
 ## Alunos
@@ -36,17 +20,48 @@ Paradigmas:
 | 180149598 | [Victor Hugo Siqueira Costa](https://github.com/8ifq3)                   |
 
 ## Sobre 
-O projeta que desenvolvemos se trata de um simulador de campo de batalha em um ambiente caótico. A ideia desse projeto é poder contolar a quantidade de combatentes de cada lado como arqueiros, cavaleiros e lanceiros, assim como controlar a quantidade de agentes neutros, os curandeiros no caso. Utilizando o Framework MESA e com o tema desse projeto, é possível utilizar os conceitos dos paradigmas de sistemas multi-agentes para construir esse projeto, demostrando o comportamento dos diferentes agentes.  
+Desenvolvemos um projeto de simulador de campo de batalha em um ambiente caótico, com o objetivo de permitir o controle da quantidade de combatentes de cada lado, como arqueiros, cavaleiros e lanceiros, além de possibilitar o controle dos agentes neutros, os curandeiros. Além disso, implementamos uma lógica de alcance e dano para os ataques de cada agente contra seus inimigos.
+
+No simulador, estabelecemos que os lanceiros só conseguem atacar inimigos a uma casa de distância, os cavaleiros atacam a duas casas de distância e os arqueiros atacam a três casas de distância. Por sua vez, os curandeiros têm a habilidade de aumentar a vida dos combatentes próximos a eles, desde que estejam a uma casa de distância.
+
+Utilizamos o framework MESA para construir o simulador, aproveitando os conceitos dos sistemas multiagentes para modelar o comportamento dos diferentes agentes e seus tipos. Com isso, conseguimos definir as interações entre os agentes, como os ataques e a cura, bem como as regras de movimentação e estratégias de combate. Dessa forma, é possível observar o comportamento que surge das interações complexas entre os agentes no campo de batalha.
 
 ## Screenshots
 Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
 
 ## Instalação 
-**Linguagens**: xxxxxx<br>
-**Tecnologias**: xxxxxx<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
-Insira um manual ou um script para auxiliar ainda mais.
-Gifs animados e outras ilustrações são bem-vindos!
+**Linguagens**: Python<br>
+**Tecnologias**: Mesa (Framework)<br>
+
+### Pré-requisitos: 
+- Python 3 ou superior
+- Mesa
+
+### Passo 1: Caso não possua o python instalado, execute os comandos abaixo
+```
+ sudo apt-get update
+```
+```
+ sudo apt-get install python3.6
+ ```
+### Passo 2: Clone o repositório
+```
+git clone https://github.com/UnBParadigmas2023-1/2023.1_G5_SMA_Campo_De_Batalha.git
+```
+### Passo 3: Entre na pasta do projeto
+```
+cd 2023.1_G5_SMA_Campo_De_Batalha
+```
+### Passo 4: Instale as dependências
+```
+pip install -r requirements.txt
+```
+### Passo 5: Rode o programa
+```
+ python3 run.py
+```
+### Passo 6: Abra o servidor no navegador usando o endereço especificado
+
 
 ## Uso 
 Com o código sendo executado, na interface do MESA, o usuário pode realizar as seguintes ações:
@@ -71,28 +86,44 @@ Com o código sendo executado, na interface do MESA, o usuário pode realizar as
     - **Step:** Executa um passo da simulação
 
 ## Vídeo
-Adicione 1 ou mais vídeos com a execução do projeto.
-Procure: 
-(i) Introduzir o projeto;
-(ii) Mostrar passo a passo o código, explicando-o, e deixando claro o que é de terceiros, e o que é contribuição real da equipe;
-(iii) Apresentar particularidades do Paradigma, da Linguagem, e das Tecnologias, e
-(iV) Apresentar lições aprendidas, contribuições, pendências, e ideias para trabalhos futuros.
-OBS: TODOS DEVEM PARTICIPAR, CONFERINDO PONTOS DE VISTA.
-TEMPO: +/- 15min
 
 ## Participações
-Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
-|Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
-| -- | -- | -- |
-| Fulano  |  Programação dos Fatos da Base de Conhecimento Lógica | Boa |
+
+| Nome do Membro                                                           | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
+| ------------------------------------------------------------------------ | ------------ | ------------------------------------------------------------------------------ |
+| [Flávio Vieira Leão](https://github.com/flaviovl)                        |  |                                                                             |
+| [Gabrielle Ribeiro Gomes](https://github.com/Gabrielle-Ribeiro)          |           |                                                                             |
+| [Kayro César Silva Machado](https://github.com/kayrocesar)               |          |                                                                            |
+| [Lucas Lopes Xavier](https://github.com/lucaslop)                        |           |                                                                             |
+| [Luis Gustavo Ferreira Marques](https://github.com/luisgfmarques)        |         |                                                                              |
+| [Mateus Cunha Maia](https://github.com/mateusmaiamaia)                   |            |                                                                             |
+| [Paulo Goncalves Lima](https://github.com/PauloGoncalvesLima)            |           |                                                                             |
+| [Thalisson Alves Gonçalves de Jesus](https://github.com/Thalisson-Alves) |  |  |
+| [Victor Hugo Siqueira Costa](https://github.com/8ifq3)                   |  |  |
 
 ## Outros 
-Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
-(i) Lições Aprendidas;
-(ii) Percepções;
-(iii) Contribuições e Fragilidades, e
-(iV) Trabalhos Futuros.
+### I. Lições Aprendidas 
+
+Durante o desenvolvimento do simulador de campo de batalha, obtivemos importantes lições sobre a aplicação do paradigma de sistemas multiagentes. Foi desafiador adaptar as ferramentas disponíveis para criar uma simulação realista de combate estratégico. A ausência de um "Jogador" da maneira convencional que conhecemos nos levou a focar na modelagem do comportamento dos diferentes agentes de batalha e a explorar a interação entre eles, incluindo lógicas de movimentação, alcance e dano. Embora tenhamos enfrentado dificuldades na implementação, a experiência nos proporcionou um maior entendimento dos desafios e possibilidades acerca do paradigma, que pode ser extremamente útil e complexo em aplicações do mundo real.
+
+### II. Percepções
+
+Ao trabalhar no simulador de campo de batalha, foi possível perceber a influência dos paradigmas de orientação a objetos e adaptá-los para uma abordagem mais adequada aos sistemas multiagentes. Dessa forma, compreendemos a necessidade de pensar em termos de comportamento e interações  entre os agentes de combate. Essa mudança de perspectiva nos permitiu compreender melhor as dinâmicas de batalha, o impacto das estratégias e as ações adotadas por cada tipo de agente.
+
+### III. Contribuições e Fragilidades 
+
+Identificamos contribuições significativas em nosso projeto de simulador de campo de batalha, mas também reconhecemos algumas fragilidades. Um aspecto positivo é a modelagem dos agentes de combate, que conseguimos representar de forma realista em relação ao alcance e dano de seus ataques. No entanto, existem aspectos que limitam um pouco a flexibilidade e adaptabilidade dos agentes em situações complexas de batalha. 
+
+### IV. Trabalhos Futuros 
+
+Com base nas experiências adquiridas, identificamos vários aspectos interessantes para trabalhos futuros como: aprimorar o comportamento dos agentes, criar mais agentes e elementos mais dinâmicos no campo de batalha, explorar mais as táticas de combate, incluir táticas de defesa e aprendizado para cada agente baseado nos combates realizados.
 
 ## Fontes
-Referencie, adequadamente, as referências utilizadas.
-Indique ainda sobre fontes de leitura complementares.
+
+> MESAPROJECT. Mesa: Agent-Based Modeling in Python 0.8.9 documentation. Disponível em: https://mesa.readthedocs.io/en/stable/. Acesso em: 2 jul. 2023.
+
+> GITHUB. Project MESA: Examples Repository. Disponível em: https://github.com/projectmesa/mesa-examples/tree/main/examples. Acesso em: 29 jul. 2023.
+
+> NORTHWESTERN UNIVERSITY. Center for Connected Learning and Computer-Based Modeling (CCL): NetLogo Models. Disponível em: https://ccl.northwestern.edu/netlogo/models/. Acesso em: 3 jul. 2023.
+
+> SERRANO, Milene. SMA - Paradigmas de Programação. Disponível em: https://aprender3.unb.br/pluginfile.php/2482516/mod_label/intro/slidesAula01bSMA.pdf. Acesso em: 3 jul. 2023.
