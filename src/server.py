@@ -1,4 +1,4 @@
-import os
+import pathlib
 
 import mesa
 
@@ -9,68 +9,68 @@ from src.agent_lancer import AgenteLancer
 from src.agent_knight import AgenteKnight
 
 
-
 model_params = {
-        "num_arqueiros_aliados": mesa.visualization.Slider(
-            name="Número de arqueiros do time azul",
-            min_value=0,
-            max_value=40,
-            step=1,
-            value=3,
-        ),
-        "num_cavaleiros_aliados": mesa.visualization.Slider(
-            name="Número de cavaleiros do time azul",
-            min_value=0,
-            max_value=40,
-            step=1,
-            value=3,
-        ),
-        "num_lanceiros_aliados": mesa.visualization.Slider(
-            name="Número de lanceiros do time azul",
-            min_value=0,
-            max_value=40,
-            step=1,
-            value=3,
-        ),
-        "num_arqueiros_inimigos": mesa.visualization.Slider(
-            name="Número de arqueiros do time vermelho",
-            min_value=0,
-            max_value=40,
-            step=1,
-            value=3,
-        ),
-        "num_cavaleiros_inimigos": mesa.visualization.Slider(
-            name="Número de cavaleiros do time vermelho",
-            min_value=0,
-            max_value=40,
-            step=1,
-            value=3,
-        ),
-        "num_lanceiros_inimigos": mesa.visualization.Slider(
-            name="Número de lanceiros do time vermelho",
-            min_value=0,
-            max_value=40,
-            step=1,
-            value=3,
-        ),
-        "num_curandeiros": mesa.visualization.Slider(
-            name="Número de curandeiros",
-            min_value=0,
-            max_value=40,
-            step=1,
-            value=3,
-        ),
-        "width": 25,
-        "height": 25,
+    "num_ally_archers": mesa.visualization.Slider(
+        name="Número de arqueiros do time azul",
+        min_value=0,
+        max_value=40,
+        step=1,
+        value=3,
+    ),
+    "num_ally_knights": mesa.visualization.Slider(
+        name="Número de cavaleiros do time azul",
+        min_value=0,
+        max_value=40,
+        step=1,
+        value=3,
+    ),
+    "num_ally_lancers": mesa.visualization.Slider(
+        name="Número de lanceiros do time azul",
+        min_value=0,
+        max_value=40,
+        step=1,
+        value=3,
+    ),
+    "num_enemy_archers": mesa.visualization.Slider(
+        name="Número de arqueiros do time vermelho",
+        min_value=0,
+        max_value=40,
+        step=1,
+        value=3,
+    ),
+    "num_enemy_knights": mesa.visualization.Slider(
+        name="Número de cavaleiros do time vermelho",
+        min_value=0,
+        max_value=40,
+        step=1,
+        value=3,
+    ),
+    "num_enemy_lancers": mesa.visualization.Slider(
+        name="Número de lanceiros do time vermelho",
+        min_value=0,
+        max_value=40,
+        step=1,
+        value=3,
+    ),
+    "num_healers": mesa.visualization.Slider(
+        name="Número de curandeiros",
+        min_value=0,
+        max_value=40,
+        step=1,
+        value=3,
+    ),
+    "width": 25,
+    "height": 25,
 }
 
-def qtdAliadosInimigos(model):
-    aliados = [r for r in model.schedule.agents if "aliado" == r.tipo]
-    inimigos = [p for p in model.schedule.agents if "inimigo" == p.tipo]
-    return f"Time azul: {len(aliados)}<br>Time vermelho: {len(inimigos)}"
+
+def enemy_ally_quantity(model):
+    ally = [r for r in model.schedule.agents if "aliado" in r.tipo]
+    enemy = [p for p in model.schedule.agents if "inimigo" in p.tipo]
+    return f"Time azul: {len(ally)}<br>Time vermelho: {len(enemy)}"
 
 
-def modelo_desenho(agent):
+def design_model(agent):
     if agent is None:
         return
 
@@ -80,27 +80,28 @@ def modelo_desenho(agent):
         "text_color": "White",
     }
 
-    suffix = { "aliado": "azul", "inimigo": "vermelho"}
-    agent_suffix = suffix.get(agent.tipo, '')
+    assets_path = pathlib.Path(__file__).parent.parent / "assets"
+    agent_color = "azul" if agent.tipo == "aliado" else "vermelho"
 
     if type(agent) is AgenteArcher:
-        portrayal["Shape"] = f"./assets/arco_{agent_suffix}.png"
+        portrayal["Shape"] = str(assets_path / f"arco_{agent_color}.png")
     elif type(agent) is AgenteKnight:
-        portrayal["Shape"] = f"./assets/espada_{agent_suffix}.png"
+        portrayal["Shape"] = str(assets_path / f"espada_{agent_color}.png")
     elif type(agent) is AgenteLancer:
-        portrayal["Shape"] = f"./assets/lanca_{agent_suffix}.png"
+        portrayal["Shape"] = str(assets_path / f"lanca_{agent_color}.png")
     else:
-        portrayal["Shape"] = f"./assets/curandeiro.png"
+        portrayal["Shape"] = str(assets_path / "curandeiro.png")
 
     return portrayal
 
-canvas_elementos = CanvasGrid(modelo_desenho, 25, 25, 600, 600)
+
+canvas_elements = CanvasGrid(design_model, 25, 25, 600, 600)
 
 server = mesa.visualization.ModularServer(
     Modelo,
     [
-        canvas_elementos,
-        qtdAliadosInimigos,
+        canvas_elements,
+        enemy_ally_quantity,
     ],
     "Campo de batalha",
     model_params,

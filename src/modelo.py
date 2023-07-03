@@ -1,100 +1,66 @@
 import mesa
-import random
 
-from enum import Enum
 from src.agent_archer import AgenteArcher
 from src.agent_lancer import AgenteLancer
 from src.agent_knight import AgenteKnight
 from src.agent_healer import AgenteHealer
-from src.utils import *
+from src.utils import empty_position
 
-class Character(Enum):
-    AgenteArcher = 1
-    AgenteKnight = 2
-    AgenteLancer = 3
 
 class Modelo(mesa.Model):
-    def __init__(self, num_arqueiros_aliados, num_cavaleiros_aliados, num_lanceiros_aliados,
-                 num_arqueiros_inimigos, num_cavaleiros_inimigos, num_lanceiros_inimigos,
-                 num_curandeiros, width, height):
-        self.num_arqueiros_aliados = num_arqueiros_aliados
-        self.num_cavaleiros_aliados = num_cavaleiros_aliados
-        self.num_lanceiros_aliados = num_lanceiros_aliados
-        self.num_arqueiros_inimigos = num_arqueiros_inimigos
-        self.num_cavaleiros_inimigos = num_cavaleiros_inimigos
-        self.num_lanceiros_inimigos = num_lanceiros_inimigos
-        self.num_curandeiros = num_curandeiros
+    def __init__(
+        self,
+        num_ally_archers,
+        num_ally_knights,
+        num_ally_lancers,
+        num_enemy_archers,
+        num_enemy_knights,
+        num_enemy_lancers,
+        num_healers,
+        width,
+        height,
+    ):
+        self.num_ally_archers = num_ally_archers
+        self.num_ally_knights = num_ally_knights
+        self.num_ally_lancers = num_ally_lancers
+        self.num_enemy_archers = num_enemy_archers
+        self.num_enemy_knights = num_enemy_knights
+        self.num_enemy_lancers = num_enemy_lancers
+        self.num_healers = num_healers
         self.grid = mesa.space.MultiGrid(width, height, torus=False)
         self.schedule = mesa.time.SimultaneousActivation(self)
         self.running = True
 
-        pos_preenc = []
-        for _ in range(self.num_curandeiros):
-            pos = posicaoVazia(self, pos_preenc)
-            agente = AgenteHealer(pos, self)
-            pos_preenc.append(pos)
-            self.schedule.add(agente)
-            self.grid.place_agent(agente, pos)
+        self.filled_positions = []
 
-        for i in range(self.num_arqueiros_aliados):
-            class_chacacter = AgenteArcher
-            pos = posicaoVazia(self, pos_preenc)
-            agente = AgenteArcher(pos, self, f'aliado')
-            pos_preenc.append(pos)
-            self.schedule.add(agente)
-            self.grid.place_agent(agente, pos)
+        self.create_agents(AgenteHealer, self.num_healers, "healer")
 
-        for i in range(self.num_cavaleiros_aliados):
-            class_chacacter = AgenteKnight
-            pos = posicaoVazia(self, pos_preenc)
-            agente = AgenteKnight(pos, self, f'aliado')
-            pos_preenc.append(pos)
-            self.schedule.add(agente)
-            self.grid.place_agent(agente, pos)
+        self.create_agents(AgenteArcher, self.num_ally_archers, "aliado")
+        self.create_agents(AgenteKnight, self.num_ally_knights, "aliado")
+        self.create_agents(AgenteLancer, self.num_ally_lancers, "aliado")
 
-        for i in range(self.num_lanceiros_aliados):
-            class_chacacter = AgenteLancer
-            pos = posicaoVazia(self, pos_preenc)
-            agente = AgenteLancer(pos, self, f'aliado')
-            pos_preenc.append(pos)
-            self.schedule.add(agente)
-            self.grid.place_agent(agente, pos)
+        self.create_agents(AgenteArcher, self.num_enemy_archers, "inimigo")
+        self.create_agents(AgenteKnight, self.num_enemy_knights, "inimigo")
+        self.create_agents(AgenteLancer, self.num_enemy_lancers, "inimigo")
 
-        for i in range(self.num_arqueiros_inimigos):
-            class_chacacter = AgenteArcher
-            pos = posicaoVazia(self, pos_preenc)
-            agente = AgenteArcher(pos, self, f'inimigo')
-            pos_preenc.append(pos)
-            self.schedule.add(agente)
-            self.grid.place_agent(agente, pos)
-
-        for i in range(self.num_cavaleiros_inimigos):
-            class_chacacter = AgenteKnight
-            pos = posicaoVazia(self, pos_preenc)
-            agente = AgenteKnight(pos, self, f'inimigo')
-            pos_preenc.append(pos)
-            self.schedule.add(agente)
-            self.grid.place_agent(agente, pos)
-
-        for i in range(self.num_lanceiros_inimigos):
-            class_chacacter = AgenteLancer
-            pos = posicaoVazia(self, pos_preenc)
-            agente = AgenteLancer(pos, self, f'inimigo')
-            pos_preenc.append(pos)
-            self.schedule.add(agente)
-            self.grid.place_agent(agente, pos)
+    def create_agents(self, AgentClass, num_agents, type):
+        for _ in range(num_agents):
+            position = empty_position(self, self.filled_positions, type)
+            agent = AgentClass(position, self, type)
+            self.filled_positions.append(position)
+            self.schedule.add(agent)
+            self.grid.place_agent(agent, position)
 
     def step(self):
-        aliados_count = inimigos_count = 0
-        for agente in self.schedule.agents:
-            if agente.tipo == 'aliado':
-                aliados_count += 1
-            elif agente.tipo == 'inimigo':
-                inimigos_count += 1
+        ally_count = enemy_count = 0
+        for agent in self.schedule.agents:
+            if agent.tipo == "aliado":
+                ally_count += 1
+            elif agent.tipo == "inimigo":
+                enemy_count += 1
 
-        if aliados_count == 0 or inimigos_count == 0:
+        if ally_count == 0 or enemy_count == 0:
             self.running = False
             return
 
         self.schedule.step()
-

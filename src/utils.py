@@ -1,13 +1,15 @@
-def posicaoVazia(self, posicoes_ocupadas):
+def empty_position(model, filled_positions, type):
     pos = None
-    while pos is None or pos in posicoes_ocupadas:
-        x = self.random.randrange(self.grid.width)
-        y = self.random.randrange(self.grid.height)
+    while pos is None or pos in filled_positions:
+        x = model.random.randrange(model.grid.width)
+        if type == 'aliado':
+            y = model.random.randrange(model.grid.height // 3)
+        elif type == 'inimigo':
+            y = model.random.randrange(model.grid.height // 3 * 2, model.grid.height)
+        else:
+            y = model.random.randrange(model.grid.height)
         pos = (x, y)
     return pos
-
-def posicaoExiste(pos, lista):
-    return any(item == pos for item in lista)
 
 
 def dist(a, b):

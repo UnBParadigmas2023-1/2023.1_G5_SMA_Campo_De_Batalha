@@ -4,11 +4,11 @@ from src.utils import *
 
 
 class AgenteHealer(mesa.Agent):
-    def __init__(self, pos, modelo):
+    def __init__(self, pos, modelo, tipo):
         super().__init__(pos, modelo)
         self.pos = pos
         self.range = 3
-        self.tipo = 'healer'
+        self.tipo = tipo
 
     def step(self):
         self.operate()
