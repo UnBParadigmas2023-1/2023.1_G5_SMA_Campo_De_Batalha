@@ -17,7 +17,7 @@ class AgenteHealer(mesa.Agent):
         for vizinho in self.model.grid.iter_neighbors(
             self.pos, moore=True, radius=self.range
         ):
-            print(vizinho.unique_id, "vizinho de", self.unique_id, "em", self.pos)
-            print(vizinho.unique_id, "curado por", self.unique_id)
+            # print(vizinho.unique_id, "vizinho de", self.unique_id, "em", self.pos)
+            # print(vizinho.unique_id, "curado por", self.unique_id)
             if vizinho.type != self.type:
                 vizinho.life = min(vizinho.life + 1, vizinho.max_life)

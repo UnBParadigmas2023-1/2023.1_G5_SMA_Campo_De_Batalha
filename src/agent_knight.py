@@ -23,10 +23,10 @@ class AgenteKnight(mesa.Agent):
         for vizinho in self.model.grid.iter_neighbors(
             self.pos, moore=True, radius=self.range
         ):
-            print(vizinho)
-            print(vizinho.unique_id, "vizinho de", self.unique_id, "em", self.pos)
+            # print(vizinho)
+            # print(vizinho.unique_id, "vizinho de", self.unique_id, "em", self.pos)
             if vizinho.type != self.type and vizinho.type != "healer":
-                print(vizinho.unique_id, "atacado por", self.unique_id)
+                # print(vizinho.unique_id, "atacado por", self.unique_id)
                 vizinho.life = calculate_damage(self, vizinho)
 
     def advance(self) -> None:
