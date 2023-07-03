@@ -4,6 +4,7 @@ import mesa
 
 from src.modelo import Modelo
 from mesa.visualization.modules import CanvasGrid
+from mesa.visualization.TextVisualization import TextVisualization
 from src.agent_archer import AgenteArcher
 from src.agent_lancer import AgenteLancer
 from src.agent_knight import AgenteKnight
@@ -92,10 +93,15 @@ def design_model(agent):
     else:
         portrayal["Shape"] = str(assets_path / "curandeiro.png")
 
+    # make subtitle in canvas_elements
+    portrayal["text"] = (
+        f"               {agent.vida:.1f}" if hasattr(agent, "vida") else ""
+    )
     return portrayal
 
 
 canvas_elements = CanvasGrid(design_model, 25, 25, 600, 600)
+
 
 server = mesa.visualization.ModularServer(
     Modelo,
@@ -107,4 +113,6 @@ server = mesa.visualization.ModularServer(
     model_params,
 )
 
-server.description = "Modelo de simulação em campo de batalha entre guerreiros do time azul e vermelho."
+server.description = (
+    "Modelo de simulação em campo de batalha entre guerreiros do time azul e vermelho."
+)
