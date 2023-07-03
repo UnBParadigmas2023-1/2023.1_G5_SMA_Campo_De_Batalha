@@ -29,6 +29,11 @@ class AgenteLancer(mesa.Agent):
             return
 
         if self.pos != None:
-            posicoes_ocupadas = [agente.pos for agente in self.model.schedule.agents]
-            pos = posicaoVazia(self.model, posicoes_ocupadas)
-            self.model.grid.move_agent(self, pos)
+            enemy = closest_enemy(self.model, self.pos, self.tipo) or self
+            new_pos = self.pos
+            if dist(enemy.pos, self.pos) > self.range:
+                new_pos = closest_empty_pos(self.model, self.pos, enemy.pos)
+            elif dist(enemy.pos, self.pos) <= self.range:
+                new_pos = furthest_empty_pos(self.model, self.pos, enemy.pos)
+
+            self.model.grid.move_agent(self, new_pos)

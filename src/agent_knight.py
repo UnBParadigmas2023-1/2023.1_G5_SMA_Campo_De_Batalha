@@ -29,6 +29,8 @@ class AgenteKnight(mesa.Agent):
             return
 
         if self.pos != None:
-            posicoes_ocupadas = [agente.pos for agente in self.model.schedule.agents]
-            pos = posicaoVazia(self.model, posicoes_ocupadas)
-            self.model.grid.move_agent(self, pos)
+            # Go to closest enemy
+            enemy = closest_enemy(self.model, self.pos, self.tipo) or self
+            new_pos = closest_empty_pos(self.model, self.pos, enemy.pos, radius=self.model.random.choice([1, 2]))
+
+            self.model.grid.move_agent(self, new_pos)
