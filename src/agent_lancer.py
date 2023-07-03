@@ -4,23 +4,30 @@ from src.utils import *
 
 
 class AgenteLancer(mesa.Agent):
-    def __init__(self, pos, modelo, tipo):
+    max_life = 15
+    damage = 1
+
+    def __init__(self, pos, modelo, tipo, damage=1):
         super().__init__(pos, modelo)
         self.pos = pos
         self.tipo = tipo
-        self.vida = 15
+        self.vida = 15.0
+        self.max_life = self.vida
+        self.damage = damage
         self.range = 1
 
     def step(self):
         self.operate()
 
     def operate(self) -> None:
-        for vizinho in self.model.grid.iter_neighbors( self.pos, moore=True, radius=self.range):
-                print(vizinho)
-                print(vizinho.unique_id, "vizinho de", self.unique_id, "em", self.pos)
-                if vizinho.tipo != self.tipo and vizinho.tipo != 'healer':
-                    print(vizinho.unique_id, "atacado por", self.unique_id)
-                    vizinho.vida -= 1
+        for vizinho in self.model.grid.iter_neighbors(
+            self.pos, moore=True, radius=self.range
+        ):
+            print(vizinho)
+            print(vizinho.unique_id, "vizinho de", self.unique_id, "em", self.pos)
+            if vizinho.tipo != self.tipo and vizinho.tipo != "healer":
+                print(vizinho.unique_id, "atacado por", self.unique_id)
+                vizinho.vida = calculate_damage(self, vizinho)
 
     def advance(self) -> None:
         if self.vida <= 0:

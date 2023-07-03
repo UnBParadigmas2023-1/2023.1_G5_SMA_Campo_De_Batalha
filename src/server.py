@@ -94,8 +94,9 @@ def design_model(agent):
         portrayal["Shape"] = str(assets_path / "curandeiro.png")
 
     # make subtitle in canvas_elements
-    portrayal["text"] = f"             {agent.vida}" if hasattr(agent, "vida") else ""
-
+    portrayal["text"] = (
+        f"               {agent.vida:.1f}" if hasattr(agent, "vida") else ""
+    )
     return portrayal
 
 
