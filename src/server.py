@@ -15,49 +15,49 @@ model_params = {
         min_value=0,
         max_value=40,
         step=1,
-        value=3,
+        value=1,
     ),
     "num_ally_knights": mesa.visualization.Slider(
         name="Número de cavaleiros do time azul",
         min_value=0,
         max_value=40,
         step=1,
-        value=3,
+        value=1,
     ),
     "num_ally_lancers": mesa.visualization.Slider(
         name="Número de lanceiros do time azul",
         min_value=0,
         max_value=40,
         step=1,
-        value=3,
+        value=1,
     ),
     "num_enemy_archers": mesa.visualization.Slider(
         name="Número de arqueiros do time vermelho",
         min_value=0,
         max_value=40,
         step=1,
-        value=3,
+        value=1,
     ),
     "num_enemy_knights": mesa.visualization.Slider(
         name="Número de cavaleiros do time vermelho",
         min_value=0,
         max_value=40,
         step=1,
-        value=3,
+        value=1,
     ),
     "num_enemy_lancers": mesa.visualization.Slider(
         name="Número de lanceiros do time vermelho",
         min_value=0,
         max_value=40,
         step=1,
-        value=3,
+        value=1,
     ),
     "num_healers": mesa.visualization.Slider(
         name="Número de curandeiros",
         min_value=0,
         max_value=40,
         step=1,
-        value=3,
+        value=1,
     ),
     "width": 25,
     "height": 25,
@@ -107,4 +107,4 @@ server = mesa.visualization.ModularServer(
     model_params,
 )
 
-server.description = "Modelo de simulação em campo de batalha entre um grupo e outro."
+server.description = "Modelo de simulação em campo de batalha entre guerreiros do time azul e vermelho."
