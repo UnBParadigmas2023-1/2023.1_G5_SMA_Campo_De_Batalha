@@ -35,13 +35,13 @@ class Modelo(mesa.Model):
 
         self.create_agents(AgenteHealer, self.num_healers, "healer")
 
-        self.create_agents(AgenteArcher, self.num_ally_archers, "aliado")
-        self.create_agents(AgenteKnight, self.num_ally_knights, "aliado")
-        self.create_agents(AgenteLancer, self.num_ally_lancers, "aliado")
+        self.create_agents(AgenteArcher, self.num_ally_archers, "ally")
+        self.create_agents(AgenteKnight, self.num_ally_knights, "ally")
+        self.create_agents(AgenteLancer, self.num_ally_lancers, "ally")
 
-        self.create_agents(AgenteArcher, self.num_enemy_archers, "inimigo")
-        self.create_agents(AgenteKnight, self.num_enemy_knights, "inimigo")
-        self.create_agents(AgenteLancer, self.num_enemy_lancers, "inimigo")
+        self.create_agents(AgenteArcher, self.num_enemy_archers, "enemy")
+        self.create_agents(AgenteKnight, self.num_enemy_knights, "enemy")
+        self.create_agents(AgenteLancer, self.num_enemy_lancers, "enemy")
 
     def create_agents(self, AgentClass, num_agents, type):
         for _ in range(num_agents):
@@ -54,9 +54,9 @@ class Modelo(mesa.Model):
     def step(self):
         ally_count = enemy_count = 0
         for agent in self.schedule.agents:
-            if agent.tipo == "aliado":
+            if agent.type == "ally":
                 ally_count += 1
-            elif agent.tipo == "inimigo":
+            elif agent.type == "enemy":
                 enemy_count += 1
 
         if ally_count == 0 or enemy_count == 0:

@@ -8,7 +8,7 @@ class AgenteHealer(mesa.Agent):
         super().__init__(pos, modelo)
         self.pos = pos
         self.range = 3
-        self.tipo = tipo
+        self.type = tipo
 
     def step(self):
         self.operate()
@@ -19,5 +19,5 @@ class AgenteHealer(mesa.Agent):
         ):
             print(vizinho.unique_id, "vizinho de", self.unique_id, "em", self.pos)
             print(vizinho.unique_id, "curado por", self.unique_id)
-            if vizinho.tipo != self.tipo:
-                vizinho.vida = min(vizinho.vida + 1, vizinho.max_life)
+            if vizinho.type != self.type:
+                vizinho.life = min(vizinho.life + 1, vizinho.max_life)
