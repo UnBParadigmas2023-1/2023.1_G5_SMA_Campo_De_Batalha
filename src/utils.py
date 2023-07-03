@@ -56,10 +56,10 @@ def furthest_empty_pos(model, cur_pos, target_pos, radius=1):
 
 def calculate_damage(agent, viction):
     damage = agent.damage
-    probabily_of_danger = agent.max_life / agent.vida
+    probabily_of_danger = agent.vida / agent.max_life
     if probabily_of_danger > 0.3:
         viction.vida -= damage * probabily_of_danger
     else:
-        viction.vida -= damage * probabily_of_danger * random.uniform(0.3, 2.0)
+        viction.vida -= damage * probabily_of_danger * random.uniform(0.3, 1.3)
 
     return viction.vida
