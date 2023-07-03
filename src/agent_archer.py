@@ -30,7 +30,7 @@ class AgenteArcher(mesa.Agent):
         if self.pos != None:
             enemy = closest_enemy(self.model, self.pos, self.tipo) or self
             new_pos = self.pos
-            if dist(enemy.pos, self.pos) + 1 > self.range:
+            if dist(enemy.pos, self.pos) > self.range:
                 new_pos = closest_empty_pos(self.model, self.pos, enemy.pos)
             elif dist(enemy.pos, self.pos) <= self.range:
                 new_pos = furthest_empty_pos(self.model, self.pos, enemy.pos, radius=self.model.random.choice([1, 2]))

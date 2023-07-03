@@ -13,7 +13,7 @@ def empty_position(model, filled_positions, type):
 
 
 def dist(a, b):
-    return abs(a[0] - b[0]) + abs(a[1] - b[1])
+    return max(abs(a[0] - b[0]), abs(a[1] - b[1]))
 
 
 def closest_enemy(model, pos, tipo):
@@ -26,16 +26,18 @@ def closest_enemy(model, pos, tipo):
 
 
 def closest_empty_pos(model, cur_pos, target_pos, radius=1):
-    possibilities = filter(
+    possibilities = [*filter(
         model.grid.is_cell_empty,
         model.grid.get_neighborhood(cur_pos, moore=True, include_center=False, radius=radius)
-    )
+    )]
+    model.random.shuffle(possibilities)
     return min(possibilities, key=lambda pos: dist(pos, target_pos), default=cur_pos)
 
 
 def furthest_empty_pos(model, cur_pos, target_pos, radius=1):
-    possibilities = filter(
+    possibilities = [*filter(
         model.grid.is_cell_empty,
         model.grid.get_neighborhood(cur_pos, moore=True, include_center=False, radius=radius)
-    )
+    )]
+    model.random.shuffle(possibilities)
     return max(possibilities, key=lambda pos: dist(pos, target_pos), default=cur_pos)
