@@ -22,7 +22,7 @@
 ## Sobre 
 Desenvolvemos um projeto de simulador de campo de batalha em um ambiente caótico, com o objetivo de permitir o controle da quantidade de combatentes de cada lado, como arqueiros, cavaleiros e lanceiros, além de possibilitar o controle dos agentes neutros, os curandeiros. Além disso, implementamos uma lógica de alcance e dano para os ataques de cada agente contra seus inimigos.
 
-No simulador, estabelecemos que os lanceiros só conseguem atacar inimigos a uma casa de distância, os cavaleiros atacam a duas casas de distância e os arqueiros atacam a três casas de distância. Por sua vez, os curandeiros têm a habilidade de aumentar a vida dos combatentes próximos a eles, desde que estejam a uma casa de distância.
+No simulador, estabelecemos que os lanceiros só conseguem atacar inimigos a duas casas de distância, os cavaleiros atacam a uma casa de distância e os arqueiros atacam a três casas de distância. Por sua vez, os curandeiros têm a habilidade de aumentar a vida dos combatentes próximos a eles, desde que estejam a uma casa de distância.
 
 Utilizamos o framework MESA para construir o simulador, aproveitando os conceitos dos sistemas multiagentes para modelar o comportamento dos diferentes agentes e seus tipos. Com isso, conseguimos definir as interações entre os agentes, como os ataques e a cura, bem como as regras de movimentação e estratégias de combate. Dessa forma, é possível observar o comportamento que surge das interações complexas entre os agentes no campo de batalha.
 

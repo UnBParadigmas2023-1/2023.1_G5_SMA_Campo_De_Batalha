@@ -14,7 +14,7 @@ class AgenteLancer(mesa.Agent):
         self.vida = 15.0
         self.max_life = self.vida
         self.damage = damage
-        self.range = 1
+        self.range = 2
 
     def step(self):
         self.operate()
