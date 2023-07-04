@@ -95,7 +95,7 @@ Com o código sendo executado, na interface do MESA, o usuário pode realizar as
 | [Gabrielle Ribeiro Gomes](https://github.com/Gabrielle-Ribeiro)          |  Ajudei na adição de assets no projeto e na correção de algumas lógicas.   |                  Regular                                                           |
 | [Kayro César Silva Machado](https://github.com/kayrocesar)               |          |                                                                            |
 | [Lucas Lopes Xavier](https://github.com/lucaslop)                        |           |                                                                             |
-| [Luis Gustavo Ferreira Marques](https://github.com/luisgfmarques)        |         |                                                                              |
+| [Luis Gustavo Ferreira Marques](https://github.com/luisgfmarques)        | Realizei a implementação do sistema de dano com porcentágem, atém de implementar algumas refatorações no código.       | Regular                                                                              |
 | [Mateus Cunha Maia](https://github.com/mateusmaiamaia)                   |            |                                                                             |
 | [Paulo Goncalves Lima](https://github.com/PauloGoncalvesLima)            |           |                                                                             |
 | [Thalisson Alves Gonçalves de Jesus](https://github.com/Thalisson-Alves) |  |  |
