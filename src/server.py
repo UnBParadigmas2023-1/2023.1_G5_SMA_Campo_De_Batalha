@@ -63,8 +63,8 @@ model_params = {
 
 
 def enemy_ally_quantity(model):
-    ally = [r for r in model.schedule.agents if "ally" in r.type]
-    enemy = [p for p in model.schedule.agents if "enemy" in p.type]
+    ally = [r for r in model.schedule.agents if "ally" in r.affiliation]
+    enemy = [p for p in model.schedule.agents if "enemy" in p.affiliation]
     return f"Time azul: {len(ally)}<br>Time vermelho: {len(enemy)}"
 
 
@@ -78,7 +78,7 @@ def design_model(agent):
         "text_color": "White",
     }
 
-    agent_color = "azul" if agent.type == "ally" else "vermelho"
+    agent_color = "azul" if agent.affiliation == "ally" else "vermelho"
 
     if type(agent) is AgentArcher:
         portrayal["Shape"] = f"./assets/arco_{agent_color}.png"

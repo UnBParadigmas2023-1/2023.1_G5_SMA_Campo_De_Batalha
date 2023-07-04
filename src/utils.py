@@ -23,7 +23,7 @@ def closest_enemy(model, pos, tipo):
     enemies = [
         agent
         for agent in model.schedule.agents
-        if agent.type != tipo and agent.type != "healer"
+        if agent.affiliation != tipo and agent.affiliation != "healer"
     ]
     return min(enemies, key=lambda enemy: dist(pos, enemy.pos), default=None)
 

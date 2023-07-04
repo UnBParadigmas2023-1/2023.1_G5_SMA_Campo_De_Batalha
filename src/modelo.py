@@ -54,9 +54,9 @@ class Modelo(mesa.Model):
     def step(self):
         ally_count = enemy_count = 0
         for agent in self.schedule.agents:
-            if agent.type == "ally":
+            if agent.affiliation == "ally":
                 ally_count += 1
-            elif agent.type == "enemy":
+            elif agent.affiliation == "enemy":
                 enemy_count += 1
 
         if ally_count == 0 or enemy_count == 0:

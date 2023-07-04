@@ -7,10 +7,10 @@ class AgentArcher(mesa.Agent):
     max_life = 5
     damage = 1
 
-    def __init__(self, pos, modelo, type, damage=1):
+    def __init__(self, pos, modelo, affiliation, damage=1):
         super().__init__(pos, modelo)
         self.pos = pos
-        self.type = type
+        self.affiliation = affiliation
         self.life = 5.0
         self.max_life = self.life
         self.damage = damage
@@ -24,7 +24,7 @@ class AgentArcher(mesa.Agent):
             self.pos, moore=True, radius=self.range
         ):
             # print(neighbor.unique_id, "neighbor de", self.unique_id, "em", self.pos)
-            if neighbor.type != self.type and neighbor.type != "healer":
+            if neighbor.affiliation != self.affiliation and neighbor.affiliation != "healer":
                 # print(neighbor.unique_id, "atacado por", self.unique_id)
                 neighbor.life = calculate_damage(self, neighbor)
 
@@ -35,7 +35,7 @@ class AgentArcher(mesa.Agent):
             return
 
         if self.pos != None:
-            enemy = closest_enemy(self.model, self.pos, self.type) or self
+            enemy = closest_enemy(self.model, self.pos, self.affiliation) or self
             new_pos = self.pos
             if dist(enemy.pos, self.pos) > self.range:
                 new_pos = closest_empty_pos(self.model, self.pos, enemy.pos)
