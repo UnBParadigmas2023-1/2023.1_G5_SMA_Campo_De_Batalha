@@ -2,9 +2,9 @@ import mesa
 
 from src.modelo import Modelo
 from mesa.visualization.modules import CanvasGrid
-from src.agent_archer import AgenteArcher
-from src.agent_lancer import AgenteLancer
-from src.agent_knight import AgenteKnight
+from src.agent_archer import AgentArcher
+from src.agent_lancer import AgentLancer
+from src.agent_knight import AgentKnight
 
 
 model_params = {
@@ -63,8 +63,8 @@ model_params = {
 
 
 def enemy_ally_quantity(model):
-    ally = [r for r in model.schedule.agents if "aliado" in r.tipo]
-    enemy = [p for p in model.schedule.agents if "inimigo" in p.tipo]
+    ally = [r for r in model.schedule.agents if "ally" in r.affiliation]
+    enemy = [p for p in model.schedule.agents if "enemy" in p.affiliation]
     return f"Time azul: {len(ally)}<br>Time vermelho: {len(enemy)}"
 
 
@@ -78,20 +78,20 @@ def design_model(agent):
         "text_color": "White",
     }
 
-    agent_color = "azul" if agent.tipo == "aliado" else "vermelho"
+    agent_color = "azul" if agent.affiliation == "ally" else "vermelho"
 
-    if type(agent) is AgenteArcher:
+    if type(agent) is AgentArcher:
         portrayal["Shape"] = f"./assets/arco_{agent_color}.png"
-    elif type(agent) is AgenteKnight:
+    elif type(agent) is AgentKnight:
         portrayal["Shape"] = f"./assets/espada_{agent_color}.png"
-    elif type(agent) is AgenteLancer:
+    elif type(agent) is AgentLancer:
         portrayal["Shape"] = f"./assets/lanca_{agent_color}.png"
     else:
         portrayal["Shape"] = f"./assets/curandeiro.png"
 
     # make subtitle in canvas_elements
-    portrayal["Vida"] = (
-        f"{agent.vida:.2f}" if hasattr(agent, "vida") else "∞"
+    portrayal["life"] = (
+        f"{agent.life:.2f}" if hasattr(agent, "life") else "∞"
     )
     return portrayal
 

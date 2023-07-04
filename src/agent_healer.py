@@ -3,21 +3,19 @@ import mesa
 from src.utils import *
 
 
-class AgenteHealer(mesa.Agent):
-    def __init__(self, pos, modelo, tipo):
+class AgentHealer(mesa.Agent):
+    def __init__(self, pos, modelo, affiliation):
         super().__init__(pos, modelo)
         self.pos = pos
         self.range = 1
-        self.tipo = tipo
+        self.affiliation = affiliation
 
     def step(self):
         self.operate()
 
     def operate(self) -> None:
-        for vizinho in self.model.grid.iter_neighbors(
+        for neighbor in self.model.grid.iter_neighbors(
             self.pos, moore=True, radius=self.range
         ):
-            print(vizinho.unique_id, "vizinho de", self.unique_id, "em", self.pos)
-            print(vizinho.unique_id, "curado por", self.unique_id)
-            if vizinho.tipo != self.tipo:
-                vizinho.damage_taken -= 1
+            if neighbor.affiliation != self.affiliation:
+                neighbor.damage_taken -= 1
