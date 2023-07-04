@@ -3,7 +3,7 @@ import mesa
 from src.utils import *
 
 
-class AgenteLancer(mesa.Agent):
+class AgentLancer(mesa.Agent):
     max_life = 15
     damage = 1
 
@@ -20,14 +20,14 @@ class AgenteLancer(mesa.Agent):
         self.operate()
 
     def operate(self) -> None:
-        for vizinho in self.model.grid.iter_neighbors(
+        for neighbor in self.model.grid.iter_neighbors(
             self.pos, moore=True, radius=self.range
         ):
-            # print(vizinho)
-            # print(vizinho.unique_id, "vizinho de", self.unique_id, "em", self.pos)
-            if vizinho.type != self.type and vizinho.type != "healer":
-                # print(vizinho.unique_id, "atacado por", self.unique_id)
-                vizinho.life = calculate_damage(self, vizinho)
+            # print(neighbor)
+            # print(neighbor.unique_id, "neighbor de", self.unique_id, "em", self.pos)
+            if neighbor.type != self.type and neighbor.type != "healer":
+                # print(neighbor.unique_id, "atacado por", self.unique_id)
+                neighbor.life = calculate_damage(self, neighbor)
 
     def advance(self) -> None:
         if self.life <= 0:

@@ -2,9 +2,9 @@ import mesa
 
 from src.modelo import Modelo
 from mesa.visualization.modules import CanvasGrid
-from src.agent_archer import AgenteArcher
-from src.agent_lancer import AgenteLancer
-from src.agent_knight import AgenteKnight
+from src.agent_archer import AgentArcher
+from src.agent_lancer import AgentLancer
+from src.agent_knight import AgentKnight
 
 
 model_params = {
@@ -80,11 +80,11 @@ def design_model(agent):
 
     agent_color = "azul" if agent.type == "ally" else "vermelho"
 
-    if type(agent) is AgenteArcher:
+    if type(agent) is AgentArcher:
         portrayal["Shape"] = f"./assets/arco_{agent_color}.png"
-    elif type(agent) is AgenteKnight:
+    elif type(agent) is AgentKnight:
         portrayal["Shape"] = f"./assets/espada_{agent_color}.png"
-    elif type(agent) is AgenteLancer:
+    elif type(agent) is AgentLancer:
         portrayal["Shape"] = f"./assets/lanca_{agent_color}.png"
     else:
         portrayal["Shape"] = f"./assets/curandeiro.png"
