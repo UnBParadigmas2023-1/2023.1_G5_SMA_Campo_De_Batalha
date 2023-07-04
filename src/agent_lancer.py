@@ -11,10 +11,11 @@ class AgenteLancer(mesa.Agent):
         super().__init__(pos, modelo)
         self.pos = pos
         self.tipo = tipo
-        self.vida = 15.0
+        self.vida = 10.0
         self.max_life = self.vida
         self.damage = damage
-        self.range = 1
+        self.damage_taken = 0
+        self.range = 2
 
     def step(self):
         self.operate()
@@ -27,9 +28,12 @@ class AgenteLancer(mesa.Agent):
             print(vizinho.unique_id, "vizinho de", self.unique_id, "em", self.pos)
             if vizinho.tipo != self.tipo and vizinho.tipo != "healer":
                 print(vizinho.unique_id, "atacado por", self.unique_id)
-                vizinho.vida = calculate_damage(self, vizinho)
+                vizinho.damage_taken += calculate_damage(self)
 
     def advance(self) -> None:
+        self.vida = min(self.vida - self.damage_taken, self.max_life)
+        self.damage_taken = 0
+
         if self.vida <= 0:
             self.model.grid.remove_agent(self)
             self.model.schedule.remove(self)
@@ -41,6 +45,6 @@ class AgenteLancer(mesa.Agent):
             if dist(enemy.pos, self.pos) > self.range:
                 new_pos = closest_empty_pos(self.model, self.pos, enemy.pos)
             elif dist(enemy.pos, self.pos) <= self.range:
-                new_pos = furthest_empty_pos(self.model, self.pos, enemy.pos)
+                new_pos = furthest_empty_pos(self.model, self.pos, enemy.pos, radius=self.model.random.choice([1, 2]))
 
             self.model.grid.move_agent(self, new_pos)

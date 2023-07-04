@@ -1,10 +1,7 @@
-import pathlib
-
 import mesa
 
 from src.modelo import Modelo
 from mesa.visualization.modules import CanvasGrid
-from mesa.visualization.TextVisualization import TextVisualization
 from src.agent_archer import AgenteArcher
 from src.agent_lancer import AgenteLancer
 from src.agent_knight import AgenteKnight
@@ -81,21 +78,20 @@ def design_model(agent):
         "text_color": "White",
     }
 
-    assets_path = pathlib.Path(__file__).parent.parent / "assets"
     agent_color = "azul" if agent.tipo == "aliado" else "vermelho"
 
     if type(agent) is AgenteArcher:
-        portrayal["Shape"] = str(assets_path / f"arco_{agent_color}.png")
+        portrayal["Shape"] = f"./assets/arco_{agent_color}.png"
     elif type(agent) is AgenteKnight:
-        portrayal["Shape"] = str(assets_path / f"espada_{agent_color}.png")
+        portrayal["Shape"] = f"./assets/espada_{agent_color}.png"
     elif type(agent) is AgenteLancer:
-        portrayal["Shape"] = str(assets_path / f"lanca_{agent_color}.png")
+        portrayal["Shape"] = f"./assets/lanca_{agent_color}.png"
     else:
-        portrayal["Shape"] = str(assets_path / "curandeiro.png")
+        portrayal["Shape"] = f"./assets/curandeiro.png"
 
     # make subtitle in canvas_elements
-    portrayal["text"] = (
-        f"               {agent.vida:.1f}" if hasattr(agent, "vida") else ""
+    portrayal["Vida"] = (
+        f"{agent.vida:.2f}" if hasattr(agent, "vida") else "∞"
     )
     return portrayal
 
