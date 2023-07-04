@@ -8,7 +8,7 @@ class AgentHealer(mesa.Agent):
         super().__init__(pos, modelo)
         self.pos = pos
         self.range = 1
-        self.tipo = tipo
+        self.affiliation = affiliation
 
 
     def step(self):
