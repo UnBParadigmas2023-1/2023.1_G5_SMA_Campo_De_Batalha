@@ -99,7 +99,7 @@ Com o código sendo executado, na interface do MESA, o usuário pode realizar as
 | [Mateus Cunha Maia](https://github.com/mateusmaiamaia)                   |            |                                                                             |
 | [Paulo Goncalves Lima](https://github.com/PauloGoncalvesLima)            |           |                                                                             |
 | [Thalisson Alves Gonçalves de Jesus](https://github.com/Thalisson-Alves) |  |  |
-| [Victor Hugo Siqueira Costa](https://github.com/8ifq3)                   |  |  |
+| [Victor Hugo Siqueira Costa](https://github.com/8ifq3)                   | Trabalhei na parte da concepção da ideia do projeto, dando sugestão e ajustando a implementação durante todo o decorrer do desenvolvimento; no funcionamento durante a utilização da interface do servidor do MESA; no funcionamento da criação e movimentação dos agentes durante a execução; na lógica do combate entre os agente; correção de bugs e refinamento das idéias. | Boa |
 
 ## Outros 
 ### I. Lições Aprendidas 
