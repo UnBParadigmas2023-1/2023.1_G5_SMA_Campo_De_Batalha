@@ -33,13 +33,13 @@ class Modelo(mesa.Model):
 
         self.filled_positions = []
 
-        self.create_agents(AgenteArcher, self.num_enemy_archers, "enemy")
-        self.create_agents(AgenteArcher, self.num_ally_archers, "ally")
-        self.create_agents(AgenteKnight, self.num_enemy_knights, "enemy")
-        self.create_agents(AgenteLancer, self.num_ally_lancers, "ally")
-        self.create_agents(AgenteLancer, self.num_enemy_lancers, "enemy")
-        self.create_agents(AgenteKnight, self.num_ally_knights, "ally")
-        self.create_agents(AgenteHealer, self.num_healers, "healer")
+        self.create_agents(AgentArcher, self.num_enemy_archers, "enemy")
+        self.create_agents(AgentArcher, self.num_ally_archers, "ally")
+        self.create_agents(AgentKnight, self.num_enemy_knights, "enemy")
+        self.create_agents(AgentLancer, self.num_ally_lancers, "ally")
+        self.create_agents(AgentLancer, self.num_enemy_lancers, "enemy")
+        self.create_agents(AgentKnight, self.num_ally_knights, "ally")
+        self.create_agents(AgentHealer, self.num_healers, "healer")
 
     def create_agents(self, AgentClass, num_agents, type):
         for _ in range(num_agents):
