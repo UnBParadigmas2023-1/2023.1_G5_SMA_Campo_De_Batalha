@@ -30,16 +30,16 @@ Utilizamos o framework MESA para construir o simulador, aproveitando os conceito
 
 <div style="display: flex; flex-wrap: wrap;">
   <div style="flex-basis: 50%; padding: 5px;">
-    <img src="" alt="" width="300" height="300">
+    <img src="https://raw.githubusercontent.com/UnBParadigmas2023-1/2023.1_G5_SMA_Campo_De_Batalha/main/assets/img1.PNG" alt="" width="1000" height="300">
   </div>
   <div style="flex-basis: 50%; padding: 5px;">
-    <img src="" alt="" width="350" height="300">
+    <img src="https://raw.githubusercontent.com/UnBParadigmas2023-1/2023.1_G5_SMA_Campo_De_Batalha/main/assets/img2.PNG" alt="" width="1000" height="300">
   </div>
   <div style="flex-basis: 50%; padding: 5px;">
-    <img src="" alt="" width="350" height="300">
+    <img src="https://raw.githubusercontent.com/UnBParadigmas2023-1/2023.1_G5_SMA_Campo_De_Batalha/main/assets/img3.PNG" alt="" width="1000" height="300">
   </div>
   <div style="flex-basis: 50%; padding: 5px;">
-    <img src="" alt="" width="350" height="350">
+    <img src="https://raw.githubusercontent.com/UnBParadigmas2023-1/2023.1_G5_SMA_Campo_De_Batalha/main/assets/img4.PNG" alt="" width="1000" height="300">
   </div>
 </div>
 
