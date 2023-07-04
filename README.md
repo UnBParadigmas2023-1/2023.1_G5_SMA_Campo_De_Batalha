@@ -91,7 +91,7 @@ Com o código sendo executado, na interface do MESA, o usuário pode realizar as
 
 | Nome do Membro                                                           | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | ------------------------------------------------------------------------ | ------------ | ------------------------------------------------------------------------------ |
-| [Flávio Vieira Leão](https://github.com/flaviovl)                        |  |                                                                             |
+| [Flávio Vieira Leão](https://github.com/flaviovl)                        |  Criei a estrutura inicial dos agentes cavaleiro, lanceiro e arqueiro e participei no processo de refatoração e melhorias |    Boa                                                                         |
 | [Gabrielle Ribeiro Gomes](https://github.com/Gabrielle-Ribeiro)          |           |                                                                             |
 | [Kayro César Silva Machado](https://github.com/kayrocesar)               |          |                                                                            |
 | [Lucas Lopes Xavier](https://github.com/lucaslop)                        |           |                                                                             |
