@@ -14,7 +14,7 @@ class AgentKnight(mesa.Agent):
         self.life = 10.0
         self.max_life = self.life
         self.damage = damage
-        self.range = 2
+        self.range = 1
 
     def step(self):
         self.operate()
