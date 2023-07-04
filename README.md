@@ -27,7 +27,21 @@ No simulador, estabelecemos que os lanceiros só conseguem atacar inimigos a dua
 Utilizamos o framework MESA para construir o simulador, aproveitando os conceitos dos sistemas multiagentes para modelar o comportamento dos diferentes agentes e seus tipos. Com isso, conseguimos definir as interações entre os agentes, como os ataques e a cura, bem como as regras de movimentação e estratégias de combate. Dessa forma, é possível observar o comportamento que surge das interações complexas entre os agentes no campo de batalha.
 
 ## Screenshots
-Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
+
+<div style="display: flex; flex-wrap: wrap;">
+  <div style="flex-basis: 50%; padding: 5px;">
+    <img src="" alt="" width="300" height="300">
+  </div>
+  <div style="flex-basis: 50%; padding: 5px;">
+    <img src="" alt="" width="350" height="300">
+  </div>
+  <div style="flex-basis: 50%; padding: 5px;">
+    <img src="" alt="" width="350" height="300">
+  </div>
+  <div style="flex-basis: 50%; padding: 5px;">
+    <img src="" alt="" width="350" height="350">
+  </div>
+</div>
 
 ## Instalação
 **Linguagens**: Python<br>
@@ -86,6 +100,8 @@ Com o código sendo executado, na interface do MESA, o usuário pode realizar as
     - **Step:** Executa um passo da simulação
 
 ## Vídeo
+
+<a href="https://www.youtube.com/watch?v=-bBdX1QDTKI">Link da apresentação</a>
 
 ## Participações
 
