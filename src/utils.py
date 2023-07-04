@@ -5,9 +5,9 @@ def empty_position(model, filled_positions, type):
     pos = None
     while pos is None or pos in filled_positions:
         x = model.random.randrange(model.grid.width)
-        if type == "aliado":
+        if type == "ally":
             y = model.random.randrange(model.grid.height // 3)
-        elif type == "inimigo":
+        elif type == "enemy":
             y = model.random.randrange(model.grid.height // 3 * 2, model.grid.height)
         else:
             y = model.random.randrange(model.grid.height)
@@ -23,7 +23,7 @@ def closest_enemy(model, pos, tipo):
     enemies = [
         agent
         for agent in model.schedule.agents
-        if agent.tipo != tipo and agent.tipo != "healer"
+        if agent.affiliation != tipo and agent.affiliation != "healer"
     ]
     return min(enemies, key=lambda enemy: dist(pos, enemy.pos), default=None)
 
@@ -56,10 +56,10 @@ def furthest_empty_pos(model, cur_pos, target_pos, radius=1):
 
 def calculate_damage(agent, viction):
     damage = agent.damage
-    probabily_of_danger = agent.vida / agent.max_life
+    probabily_of_danger = agent.life / agent.max_life
     if probabily_of_danger > 0.3:
-        viction.vida -= damage * probabily_of_danger
+        viction.life -= damage * probabily_of_danger
     else:
-        viction.vida -= damage * probabily_of_danger * random.uniform(0.3, 1.3)
+        viction.life -= damage * probabily_of_danger * random.uniform(0.3, 1.3)
 
-    return viction.vida
+    return viction.life
