@@ -19,7 +19,7 @@
 | 190117401 | [Thalisson Alves Gonçalves de Jesus](https://github.com/Thalisson-Alves) |
 | 180149598 | [Victor Hugo Siqueira Costa](https://github.com/8ifq3)                   |
 
-## Sobre 
+## Sobre
 Desenvolvemos um projeto de simulador de campo de batalha em um ambiente caótico, com o objetivo de permitir o controle da quantidade de combatentes de cada lado, como arqueiros, cavaleiros e lanceiros, além de possibilitar o controle dos agentes neutros, os curandeiros. Além disso, implementamos uma lógica de alcance e dano para os ataques de cada agente contra seus inimigos.
 
 No simulador, estabelecemos que os lanceiros só conseguem atacar inimigos a duas casas de distância, os cavaleiros atacam a uma casa de distância e os arqueiros atacam a três casas de distância. Por sua vez, os curandeiros têm a habilidade de aumentar a vida dos combatentes próximos a eles, desde que estejam a uma casa de distância.
@@ -29,11 +29,11 @@ Utilizamos o framework MESA para construir o simulador, aproveitando os conceito
 ## Screenshots
 Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
 
-## Instalação 
+## Instalação
 **Linguagens**: Python<br>
 **Tecnologias**: Mesa (Framework)<br>
 
-### Pré-requisitos: 
+### Pré-requisitos:
 - Python 3 ou superior
 - Mesa
 
@@ -63,7 +63,7 @@ pip install -r requirements.txt
 ### Passo 6: Abra o servidor no navegador usando o endereço especificado
 
 
-## Uso 
+## Uso
 Com o código sendo executado, na interface do MESA, o usuário pode realizar as seguintes ações:
 
 - Manipular os _sliders_ para modificar os parâmetros do ambiente, localizados no canto superior esquerdo da tela.
@@ -98,11 +98,11 @@ Com o código sendo executado, na interface do MESA, o usuário pode realizar as
 | [Luis Gustavo Ferreira Marques](https://github.com/luisgfmarques)        | Realizei a implementação do sistema de dano com porcentágem, atém de implementar algumas refatorações no código.       | Regular                                                                              |
 | [Mateus Cunha Maia](https://github.com/mateusmaiamaia)                   |     Fiz a modificação nos arquivos server.py e modelo.py para poder escolher exatamente a quantidade de agentes seriam colocados dentro do campo de batalha, além de ajudar na criação do projeto no geral, com a correção da lógica de ataque, criação do readme e na resolução de alguns bugs no geral       |           Boa                              |
 | [Paulo Goncalves Lima](https://github.com/PauloGoncalvesLima)            |           |                                                                             |
-| [Thalisson Alves Gonçalves de Jesus](https://github.com/Thalisson-Alves) |  |  |
+| [Thalisson Alves Gonçalves de Jesus](https://github.com/Thalisson-Alves) | Contribui com a adição do agente Healer, melhorias na lógica de movimentação e spawns dos agentes, correções/integrações de outras funcionalidades | Excelente |
 | [Victor Hugo Siqueira Costa](https://github.com/8ifq3)                   | Trabalhei na parte da concepção da ideia do projeto, dando sugestão e ajustando a implementação durante todo o decorrer do desenvolvimento; no funcionamento durante a utilização da interface do servidor do MESA; no funcionamento da criação e movimentação dos agentes durante a execução; na lógica do combate entre os agente; correção de bugs e refinamento das idéias. | Boa |
 
-## Outros 
-### I. Lições Aprendidas 
+## Outros
+### I. Lições Aprendidas
 
 Durante o desenvolvimento do simulador de campo de batalha, obtivemos importantes lições sobre a aplicação do paradigma de sistemas multiagentes. Foi desafiador adaptar as ferramentas disponíveis para criar uma simulação realista de combate estratégico. A ausência de um "Jogador" da maneira convencional que conhecemos nos levou a focar na modelagem do comportamento dos diferentes agentes de batalha e a explorar a interação entre eles, incluindo lógicas de movimentação, alcance e dano. Embora tenhamos enfrentado dificuldades na implementação, a experiência nos proporcionou um maior entendimento dos desafios e possibilidades acerca do paradigma, que pode ser extremamente útil e complexo em aplicações do mundo real.
 
@@ -110,11 +110,11 @@ Durante o desenvolvimento do simulador de campo de batalha, obtivemos importante
 
 Ao trabalhar no simulador de campo de batalha, foi possível perceber a influência dos paradigmas de orientação a objetos e adaptá-los para uma abordagem mais adequada aos sistemas multiagentes. Dessa forma, compreendemos a necessidade de pensar em termos de comportamento e interações  entre os agentes de combate. Essa mudança de perspectiva nos permitiu compreender melhor as dinâmicas de batalha, o impacto das estratégias e as ações adotadas por cada tipo de agente.
 
-### III. Contribuições e Fragilidades 
+### III. Contribuições e Fragilidades
 
-Identificamos contribuições significativas em nosso projeto de simulador de campo de batalha, mas também reconhecemos algumas fragilidades. Um aspecto positivo é a modelagem dos agentes de combate, que conseguimos representar de forma realista em relação ao alcance e dano de seus ataques. No entanto, existem aspectos que limitam um pouco a flexibilidade e adaptabilidade dos agentes em situações complexas de batalha. 
+Identificamos contribuições significativas em nosso projeto de simulador de campo de batalha, mas também reconhecemos algumas fragilidades. Um aspecto positivo é a modelagem dos agentes de combate, que conseguimos representar de forma realista em relação ao alcance e dano de seus ataques. No entanto, existem aspectos que limitam um pouco a flexibilidade e adaptabilidade dos agentes em situações complexas de batalha.
 
-### IV. Trabalhos Futuros 
+### IV. Trabalhos Futuros
 
 Com base nas experiências adquiridas, identificamos vários aspectos interessantes para trabalhos futuros como: aprimorar o comportamento dos agentes, criar mais agentes e elementos mais dinâmicos no campo de batalha, explorar mais as táticas de combate, incluir táticas de defesa e aprendizado para cada agente baseado nos combates realizados.
 
