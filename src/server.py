@@ -7,7 +7,6 @@ from src.agent_lancer import AgentLancer
 from src.agent_knight import AgentKnight
 
 
-
 model_params = {
     "num_ally_archers": mesa.visualization.Slider(
         name="Número de arqueiros do time azul",

@@ -11,9 +11,10 @@ class AgentKnight(mesa.Agent):
         super().__init__(pos, modelo)
         self.pos = pos
         self.affiliation = affiliation
-        self.life = 10.0
+        self.life = 15.0
         self.max_life = self.life
         self.damage = damage
+        self.damage_taken = 0
         self.range = 1
 
     def step(self):
@@ -23,13 +24,13 @@ class AgentKnight(mesa.Agent):
         for neighbor in self.model.grid.iter_neighbors(
             self.pos, moore=True, radius=self.range
         ):
-            # print(neighbor)
-            # print(neighbor.unique_id, "neighbor de", self.unique_id, "em", self.pos)
             if neighbor.affiliation != self.affiliation and neighbor.affiliation != "healer":
-                # print(neighbor.unique_id, "atacado por", self.unique_id)
-                neighbor.life = calculate_damage(self, neighbor)
+                neighbor.damage_taken += calculate_damage(self)
 
     def advance(self) -> None:
+        self.life = min(self.life - self.damage_taken, self.max_life)
+        self.damage_taken = 0
+
         if self.life <= 0:
             self.model.grid.remove_agent(self)
             self.model.schedule.remove(self)

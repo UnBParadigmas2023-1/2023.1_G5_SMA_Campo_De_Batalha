@@ -10,7 +10,6 @@ class AgentHealer(mesa.Agent):
         self.range = 1
         self.affiliation = affiliation
 
-
     def step(self):
         self.operate()
 
@@ -18,7 +17,5 @@ class AgentHealer(mesa.Agent):
         for neighbor in self.model.grid.iter_neighbors(
             self.pos, moore=True, radius=self.range
         ):
-            # print(neighbor.unique_id, "neighbor de", self.unique_id, "em", self.pos)
-            # print(neighbor.unique_id, "curado por", self.unique_id)
             if neighbor.affiliation != self.affiliation:
-                neighbor.life = min(neighbor.life + 1, neighbor.max_life)
+                neighbor.damage_taken -= 1

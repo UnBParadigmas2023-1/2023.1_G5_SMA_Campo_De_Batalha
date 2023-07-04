@@ -54,12 +54,12 @@ def furthest_empty_pos(model, cur_pos, target_pos, radius=1):
     return max(possibilities, key=lambda pos: dist(pos, target_pos), default=cur_pos)
 
 
-def calculate_damage(agent, viction):
+def calculate_damage(agent):
     damage = agent.damage
     probabily_of_danger = agent.life / agent.max_life
     if probabily_of_danger > 0.3:
-        viction.life -= damage * probabily_of_danger
+        damage *= probabily_of_danger
     else:
-        viction.life -= damage * probabily_of_danger * random.uniform(0.3, 1.3)
+        damage *= probabily_of_danger * random.uniform(0.3, 1.3)
 
-    return viction.life
+    return damage
